@@ -4,10 +4,14 @@ package WordBank;
 
 public class WordBank {
     // constants
-    public String[] words = {"hello", "rainbow", "apples", "xylophone", "crocodile", "tiger"};
+    public String[] words = {"apple", "alpha", "apples", "xylaphone", "crocadile", "tager"};
+
+    public void setDisplayWord(String displayWord) {
+        this.displayWord = displayWord;
+    }
 
     // variables
-    public String displayWord;
+    public String displayWord = "";
     private String answerWord;
 
     //constructors

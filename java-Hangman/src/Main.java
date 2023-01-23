@@ -16,30 +16,36 @@ public class Main {
         String gameStartMessage = String.format("So, %s you have selected %s lives lets play!", userName, numberOfLivesChosen);
         System.out.println(gameStartMessage);
 
+//answer word = hello
+//        display word = -----
+//        user guess = g
 
 
         GameOperation game = new GameOperation(numberOfLivesChosen);
         WordBank bank = new WordBank(numberOfLivesChosen);
-        while (game.livesRemaining() > 0 || bank.displayWord.contains("-") ) {
+        while ( (!game.isGameOver) || bank.displayWord.contains("-")) {
             System.out.println(bank.displayWord);
             System.out.println("Guess a Word!");
-            String userGuess = input.next();
-            String userGuessChecked = userGuess.substring(0,0);
-            game.guessCount ++;
+            char userGuess = input.next().toLowerCase().charAt(0);
+
+            game.guessCount++;
             for (int i = 0; i < bank.getAnswerWord().length(); i++) {
-                if (userGuessChecked.charAt(0) == bank.getAnswerWord().charAt(i)) {
-                    bank.displayWord = bank.displayWord.replace(bank.getAnswerWord().charAt(i), userGuessChecked.charAt(i));
+                char characterToReplace = bank.getAnswerWord().charAt(i);
+                if (characterToReplace == userGuess) {
+                    System.out.println("its a match");
+                    String updateWord = bank.displayWord.replace(characterToReplace, userGuess);
+                    System.out.println(updateWord);
+                    bank.setDisplayWord(updateWord);
                 }
             }
             if (bank.displayWord.equals(bank.getAnswerWord())) {
                 System.out.println("you win!");
             }
         }
-        if (game.guessCount == (int) numberOfLivesChosen) {
-            System.out.println("you lose");
-        }
-
+        System.out.println("you lose");
     }
 
-
 }
+
+
+

@@ -3,9 +3,7 @@ package GameOperation;
 public class GameOperation {
     public byte numberOfLives;
     public byte guessCount = 0;
-    public byte livesRemaining () {
-        return (byte) (this.numberOfLives - this.guessCount);
-    }
+    public boolean isGameOver = (this.numberOfLives - this.guessCount) > (byte) 0;
     public GameOperation(byte numberOfLivesChosen) {
         this.numberOfLives = numberOfLivesChosen;
     }
